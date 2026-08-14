@@ -7,7 +7,7 @@ langchain4j:
       # 您的阿里云 API Key（从控制台获取）
       api-key: sk-4a0c362daae4466494c94d90d85c0afe
       # 模型名称，例如 qwen-max、qwen-plus、qwen-turbo 等
-      model-name: qwen3.7-plus
+      model-name: qwen3.7-flash-2026-07-15
       # 可选：开启请求/响应日志便于调试
       log-requests: true
       log-responses: true

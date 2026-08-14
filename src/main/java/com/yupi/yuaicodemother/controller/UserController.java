@@ -10,10 +10,7 @@ import com.yupi.yuaicodemother.constant.UserConstant;
 import com.yupi.yuaicodemother.exception.BusinessException;
 import com.yupi.yuaicodemother.exception.ErrorCode;
 import com.yupi.yuaicodemother.exception.ThrowUtils;
-import com.yupi.yuaicodemother.model.dto.user.UserAddRequest;
-import com.yupi.yuaicodemother.model.dto.user.UserQueryRequest;
-import com.yupi.yuaicodemother.model.dto.user.UserRegisterRequest;
-import com.yupi.yuaicodemother.model.dto.user.UserUpdateRequest;
+import com.yupi.yuaicodemother.model.dto.user.*;
 import com.yupi.yuaicodemother.model.vo.user.LoginUserVO;
 import com.yupi.yuaicodemother.model.vo.user.UserVO;
 import jakarta.annotation.Resource;
@@ -58,14 +55,18 @@ public class UserController {
     }
     /**
      * 用户登录
-     * @return
+     *
+     * @param userLoginRequest 用户登录请求
+     * @param request          请求对象
+     * @return 脱敏后的用户登录信息
      */
-    @PostMapping("login")
-    public BaseResponse<LoginUserVO> userLogin(@RequestBody UserRegisterRequest userRegisterRequest, HttpServletRequest request) {
-        ThrowUtils.throwIf(userRegisterRequest == null, ErrorCode.PARAMS_ERROR);
-        String userAccount = userRegisterRequest.getUserAccount();
-        String userPassword = userRegisterRequest.getUserPassword();
-        return ResultUtils.success(userService.userLogin(userAccount, userPassword, request));
+    @PostMapping("/login")
+    public BaseResponse<LoginUserVO> userLogin(@RequestBody UserLoginRequest userLoginRequest, HttpServletRequest request) {
+        ThrowUtils.throwIf(userLoginRequest == null, ErrorCode.PARAMS_ERROR);
+        String userAccount = userLoginRequest.getUserAccount();
+        String userPassword = userLoginRequest.getUserPassword();
+        LoginUserVO loginUserVO = userService.userLogin(userAccount, userPassword, request);
+        return ResultUtils.success(loginUserVO);
     }
     /**
      * 获取当前登录用户

@@ -66,39 +66,6 @@ public class ChatHistoryServiceImpl extends ServiceImpl<ChatHistoryMapper, ChatH
         return this.remove(queryWrapper);
     }
     @Override
-    public QueryWrapper getQueryWrapper(ChatHistoryQueryRequest chatHistoryQueryRequest) {
-        QueryWrapper queryWrapper = QueryWrapper.create();
-        if(chatHistoryQueryRequest == null){
-            return queryWrapper;
-        }
-        Long id = chatHistoryQueryRequest.getId();
-        String message = chatHistoryQueryRequest.getMessage();
-        String messageType = chatHistoryQueryRequest.getMessageType();
-        Long appId = chatHistoryQueryRequest.getAppId();
-        Long userId = chatHistoryQueryRequest.getUserId();
-        LocalDateTime lastCreateTime = chatHistoryQueryRequest.getLastCreateTime();
-        String sortField = chatHistoryQueryRequest.getSortField();
-        String sortOrder = chatHistoryQueryRequest.getSortOrder();
-        //拼接查询条件
-        queryWrapper.eq("id",id)
-                .like("message", message)
-                .eq("messageType", messageType)
-                .eq("appId", appId)
-                .eq("userId", userId);
-        //游标查询逻辑 - 只使用createTime作为游标
-        if(lastCreateTime != null){
-            queryWrapper.lt("createTime", lastCreateTime);
-        }
-        //排序
-        if(StrUtil.isNotBlank(sortField)){
-            queryWrapper.orderBy(sortField,"ascend".equals(sortOrder));
-        }else{
-            //默认按创建时间降序排序
-            queryWrapper.orderBy("createTime");
-        }
-        return queryWrapper;
-    }
-    @Override
     public Page<ChatHistory> listAppChatHistoryByPage(Long appId, int pageSize,
                                                       LocalDateTime lastCreateTime,
                                                       User loginUser) {
@@ -152,5 +119,44 @@ public class ChatHistoryServiceImpl extends ServiceImpl<ChatHistoryMapper, ChatH
             // 加载失败不影响系统运行，只是没有历史上下文
             return 0;
         }
+    }
+    /**
+     * 获取查询包装类
+     *
+     * @param chatHistoryQueryRequest
+     * @return
+     */
+    @Override
+    public QueryWrapper getQueryWrapper(ChatHistoryQueryRequest chatHistoryQueryRequest) {
+        QueryWrapper queryWrapper = QueryWrapper.create();
+        if (chatHistoryQueryRequest == null) {
+            return queryWrapper;
+        }
+        Long id = chatHistoryQueryRequest.getId();
+        String message = chatHistoryQueryRequest.getMessage();
+        String messageType = chatHistoryQueryRequest.getMessageType();
+        Long appId = chatHistoryQueryRequest.getAppId();
+        Long userId = chatHistoryQueryRequest.getUserId();
+        LocalDateTime lastCreateTime = chatHistoryQueryRequest.getLastCreateTime();
+        String sortField = chatHistoryQueryRequest.getSortField();
+        String sortOrder = chatHistoryQueryRequest.getSortOrder();
+        // 拼接查询条件
+        queryWrapper.eq("id", id)
+                .like("message", message)
+                .eq("messageType", messageType)
+                .eq("appId", appId)
+                .eq("userId", userId);
+        // 游标查询逻辑 - 只使用 createTime 作为游标
+        if (lastCreateTime != null) {
+            queryWrapper.lt("createTime", lastCreateTime);
+        }
+        // 排序
+        if (StrUtil.isNotBlank(sortField)) {
+            queryWrapper.orderBy(sortField, "ascend".equals(sortOrder));
+        } else {
+            // 默认按创建时间降序排列
+            queryWrapper.orderBy("createTime", false);
+        }
+        return queryWrapper;
     }
 }
