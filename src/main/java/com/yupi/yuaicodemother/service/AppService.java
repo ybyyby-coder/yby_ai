@@ -3,11 +3,11 @@ package com.yupi.yuaicodemother.service;
 
 import com.mybatisflex.core.query.QueryWrapper;
 import com.mybatisflex.core.service.IService;
+import com.yupi.yuaicodemother.model.dto.app.AppAddRequest;
 import com.yupi.yuaicodemother.model.dto.app.AppQueryRequest;
 import com.yupi.yuaicodemother.model.entity.App;
 import com.yupi.yuaicodemother.model.entity.User;
 import com.yupi.yuaicodemother.model.vo.app.AppVO;
-import org.springframework.http.codec.ServerSentEvent;
 import reactor.core.publisher.Flux;
 
 import java.util.List;
@@ -18,6 +18,13 @@ import java.util.List;
  * @author <a href="https://github.com/ybynb">yby</a>
  */
 public interface AppService extends IService<App> {
+    /**
+     * 添加应用
+     * @param appAddRequest
+     * @param loginUser
+     * @return
+     */
+    Long addApp(AppAddRequest appAddRequest, User loginUser);
 
     /**
      * 获取脱敏应用返回
@@ -48,5 +55,11 @@ public interface AppService extends IService<App> {
      */
     Flux<String> chatToGenCode(Long appId, String message, User loginUser);
 
+    /**
+     * 部署应用
+     * @param appId
+     * @param loginUser
+     * @return
+     */
     String deployApp(Long appId, User loginUser);
 }

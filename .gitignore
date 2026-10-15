@@ -6,9 +6,14 @@ tmp
 !**/src/main/**/target/
 !**/src/test/**/target/
 
-### CUSTOM ###
+# 确保 application-local.yml 在任何目录下都被忽略
 application-local.yml
-
+**/application-local.yml
+# 或者指定具体路径
+src/main/resources/application-local.yml
+target/
+tmp/
+.idea/
 ### STS ###
 .apt_generated
 .classpath

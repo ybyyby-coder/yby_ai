@@ -9,8 +9,6 @@ import java.util.concurrent.TimeUnit;
 
 /**
  * Vue项目生成器
- *
- * @author <a href="https://github.com/yupi">yupi</a>
  */
 @Slf4j
 @Component

@@ -25,7 +25,7 @@ import static dev.langchain4j.internal.ValidationUtils.ensureNotEmpty;
 import static dev.langchain4j.internal.ValidationUtils.ensureNotNull;
 
 @Internal
-public class AiServiceTokenStream implements TokenStream {
+public class    AiServiceTokenStream implements TokenStream {
 
     private final List<ChatMessage> messages;
     private final List<ToolSpecification> toolSpecifications;
