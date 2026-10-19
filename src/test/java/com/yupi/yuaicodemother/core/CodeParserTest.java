@@ -1,8 +1,7 @@
-package com.yupi.yuaicodemother;
+package com.yupi.yuaicodemother.core;
 
 import com.yupi.yuaicodemother.ai.model.HtmlCodeResult;
 import com.yupi.yuaicodemother.ai.model.MultiFileResult;
-import com.yupi.yuaicodemother.core.CodeParser;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;

@@ -15,7 +15,7 @@ import java.nio.file.StandardOpenOption;
  * 支持ai通过工具调用的方式写入文件
  */
 @Slf4j
-public class FileWriteFool {
+public class FileWriteTool {
     @Tool("写入文件到指定位置")
     public String writeFile(@P("文件的相对路径")String relativeFilePath,
                             @P("要写入文件的内容")String content,

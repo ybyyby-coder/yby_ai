@@ -59,6 +59,7 @@ public class AiCodeGeneratorFacade {
                 MultiFileResult multiFileResult = aiCodeGeneratorService.generateMultiFileCode(userMessage);
                 yield CodeFileSaverExecutor.executorSaver(multiFileResult,codeGenTypeEnum.MULTI_FILE,appId);
             }
+
             default -> {
                 String errorMessage = "不支持的生成类型：" + codeGenTypeEnum.getValue();
                 throw new BusinessException(ErrorCode.SYSTEM_ERROR, errorMessage);

@@ -1,6 +1,5 @@
-package com.yupi.yuaicodemother;
+package com.yupi.yuaicodemother.ai;
 
-import com.yupi.yuaicodemother.ai.AiCodeGeneratorService;
 import com.yupi.yuaicodemother.ai.model.HtmlCodeResult;
 import com.yupi.yuaicodemother.ai.model.MultiFileResult;
 import jakarta.annotation.Resource;

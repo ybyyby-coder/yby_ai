@@ -7,7 +7,7 @@ import java.util.regex.Pattern;
 
 
 /**
- * html 单文件代码解析器
+ * MultiFile 多文件代码解析器
  */
 public class MultiFileCodeParser implements CodeParser<MultiFileResult>{
 

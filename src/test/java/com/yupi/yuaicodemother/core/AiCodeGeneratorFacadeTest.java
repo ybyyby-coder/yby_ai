@@ -1,6 +1,5 @@
-package com.yupi.yuaicodemother;
+package com.yupi.yuaicodemother.core;
 
-import com.yupi.yuaicodemother.core.AiCodeGeneratorFacade;
 import com.yupi.yuaicodemother.model.enums.CodeGenTypeEnum;
 import jakarta.annotation.Resource;
 import org.junit.jupiter.api.Assertions;
