@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>拾光博客 | 记录生活与技术</title>
+    <meta name="description" content="一个专注于前端技术与生活方式的个人博客">
+    <!-- 引入外部样式表 -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- 导航头部 -->
+    <header class="site-header">
+        <div class="container header-inner">
+            <a href="#" class="logo">拾光博客</a>
+            <button class="menu-toggle" aria-label="切换导航菜单">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+            <nav class="nav-links">
+                <a href="#home" class="nav-item active">首页</a>
+                <a href="#blog" class="nav-item">文章</a>
+                <a href="#about" class="nav-item">关于</a>
+                <a href="#contact" class="nav-item">联系</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- 英雄区 / 欢迎区块 -->
+        <section id="home" class="hero">
+            <div class="container hero-content">
+                <h1>用代码书写世界，用文字记录时光</h1>
+                <p>这里分享前端开发心得、技术架构探索以及个人生活中的点滴感悟。希望能为同样热爱创造的你带来一些启发。</p>
+                <a href="#blog" class="btn btn-primary">开始阅读</a>
+            </div>
+        </section>
+
+        <!-- 博客文章列表区 -->
+        <section id="blog" class="blog-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>最新文章</h2>
+                    <div class="search-box">
+                        <input type="text" id="search-input" placeholder="搜索文章标题或内容..." autocomplete="off">
+                    </div>
+                </div>
+                
+                <div id="no-results" class="no-results hidden">没有找到匹配的文章。</div>
+
+                <div class="posts-grid">
+                    <!-- 文章卡片 1 -->
+                    <article class="post-card" data-title="深入理解 CSS Grid 布局实战" data-excerpt="Grid 布局是现代 CSS 中最强大的二维布局系统。本文将通过五个实际案例，带你从零掌握 Grid 的核心概念与高频用法。">
+                        <figure class="post-image">
+                            <img src="https://picsum.photos/seed/grid/600/400" alt="CSS Grid 示意图">
+                        </figure>
+                        <div class="post-content">
+                            <div class="post-meta">
+                                <span class="category">前端进阶</span>
+                                <time datetime="2023-10-15">2023-10-15</time>
+                            </div>
+                            <h3 class="post-title"><a href="#">深入理解 CSS Grid 布局实战</a></h3>
+                            <p class="post-excerpt">Grid 布局是现代 CSS 中最强大的二维布局系统。本文将通过五个实际案例，带你从零掌握 Grid 的核心概念与高频用法。</p>
+                            <a href="#" class="read-more">阅读全文 &rarr;</a>
+                        </div>
+                    </article>
+
+                    <!-- 文章卡片 2 -->
+                    <article class="post-card" data-title="JavaScript 异步编程：从 Promise 到 Async/Await" data-excerpt="异步编程是 JS 开发的基石。本文梳理了回调地狱的演进历程，详细对比了 Promise、Generator 和 Async/Await 的优劣及适用场景。">
+                        <figure class="post-image">
+                            <img src="https://picsum.photos/seed/js/600/400" alt="JavaScript 代码屏幕">
+                        </figure>
+                        <div class="post-content">
+                            <div class="post-meta">
+                                <span class="category">语言核心</span>
+                                <time datetime="2023-10-28">2023-10-28</time>
+                            </div>
+                            <h3 class="post-title"><a href="#">JavaScript 异步编程：从 Promise 到 Async/Await</a></h3>
+                            <p class="post-excerpt">异步编程是 JS 开发的基石。本文梳理了回调地狱的演进历程，详细对比了 Promise、Generator 和 Async/Await 的优劣及适用场景。</p>
+                            <a href="#" class="read-more">阅读全文 &rarr;</a>
+                        </div>
+                    </article>
+
+                    <!-- 文章卡片 3 -->
+                    <article class="post-card" data-title="极简主义设计：如何打造干净的 UI 界面" data-excerpt="少即是多。探讨如何在界面设计中运用留白、色彩限制与排版节奏，提升用户体验与信息传达效率，附 Figma 工作流分享。">
+                        <figure class="post-image">
+                            <img src="https://picsum.photos/seed/ui/600/400" alt="UI 设计稿">
+                        </figure>
+                        <div class="post-content">
+                            <div class="post-meta">
+                                <span class="category">设计美学</span>
+                                <time datetime="2023-11-05">2023-11-05</time>
+                            </div>
+                            <h3 class="post-title"><a href="#">极简主义设计：如何打造干净的 UI 界面</a></h3>
+                            <p class="post-excerpt">少即是多。探讨如何在界面设计中运用留白、色彩限制与排版节奏，提升用户体验与信息传达效率，附 Figma 工作流分享。</p>
+                            <a href="#" class="read-more">阅读全文 &rarr;</a>
+                        </div>
+                    </article>
+
+                    <!-- 文章卡片 4 -->
+                    <article class="post-card" data-title="远程工作两年：我的效率工具与时间管理清单" data-excerpt="告别办公室束缚后，如何保持专注？整理了我常用的 Notion 模板、Focus To-Do 技巧以及数字游民的生活平衡之道。">
+                        <figure class="post-image">
+                            <img src="https://picsum.photos/seed/wrk/600/400" alt="整洁的工作台">
+                        </figure>
+                        <div class="post-content">
+                            <div class="post-meta">
+                                <span class="category">生活方式</span>
+                                <time datetime="2023-11-18">2023-11-18</time>
+                            </div>
+                            <h3 class="post-title"><a href="#">远程工作两年：我的效率工具与时间管理清单</a></h3>
+                            <p class="post-excerpt">告别办公室束缚后，如何保持专注？整理了我常用的 Notion 模板、Focus To-Do 技巧以及数字游民的生活平衡之道。</p>
+                            <a href="#" class="read-more">阅读全文 &rarr;</a>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- 关于区块 -->
+        <section id="about" class="about-section">
+            <div class="container about-content">
+                <h2>关于作者</h2>
+                <p>嗨，我是拾光。一名热爱开源的前端开发者与设计爱好者。平时喜欢钻研浏览器底层原理，周末会去徒步或拍摄城市风光。本站所有文章内容均为原创，若需转载请提前邮件联系。期待与你交流技术，分享生活。</p>
+            </div>
+        </section>
+    </main>
+
+    <!-- 底部页脚 -->
+    <footer id="contact" class="site-footer">
+        <div class="container footer-inner">
+            <div class="footer-col">
+                <h3>拾光博客</h3>
+                <p>记录成长，分享价值。</p>
+            </div>
+            <div class="footer-col">
+                <h3>快速链接</h3>
+                <ul class="footer-links">
+                    <li><a href="#home">首页</a></li>
+                    <li><a href="#blog">归档</a></li>
+                    <li><a href="#about">关于</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>联系方式</h3>
+                <p>Email: hello@shiguang.blog</p>
+                <div class="social-links">
+                    <a href="#" aria-label="GitHub">GitHub</a>
+                    <a href="#" aria-label="Twitter">Twitter</a>
+                    <a href="#" aria-label="微信">微信</a>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2023 拾光博客. All rights reserved. Built with vanilla HTML, CSS & JS.</p>
+        </div>
+    </footer>
+
+    <!-- 引入外部脚本 -->
+    <script src="script.js"></script>
+</body>
+</html>

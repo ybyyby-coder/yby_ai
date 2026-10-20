@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ModBlog | 现代个人博客</title>
+  <style>
+    :root { --bg: #f8fafc; --text: #0f172a; --card: #ffffff; --accent: #2563eb; --border: #e2e8f0; }
+    [data-theme="dark"] { --bg: #0f172a; --text: #f1f5f9; --card: #1e293b; --border: #334155; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: system-ui, -apple-system, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; transition: background .3s, color .3s; }
+    header { display: flex; justify-content: space-between; align-items: center; padding: 1rem 5%; background: var(--card); border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 50; }
+    .logo { font-size: 1.25rem; font-weight: 700; color: var(--accent); }
+    nav { display: flex; gap: 1.25rem; align-items: center; }
+    nav a { text-decoration: none; color: var(--text); font-weight: 500; transition: color .2s; }
+    nav a:hover { color: var(--accent); }
+    .btn { background: var(--accent); color: #fff; border: none; padding: .4rem .8rem; border-radius: 6px; cursor: pointer; font-size: .9rem; }
+    main { max-width: 1100px; margin: 0 auto; padding: 2rem 1rem; }
+    .hero { text-align: center; padding: 4rem 1rem; background: linear-gradient(135deg, #3b82f620, #8b5cf620); border-radius: 16px; margin-bottom: 3rem; }
+    .hero h1 { font-size: 2.5rem; margin-bottom: .5rem; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.5rem; }
+    .card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; transition: transform .2s, box-shadow .2s; }
+    .card:hover { transform: translateY(-4px); box-shadow: 0 10px 15px -3px rgba(0,0,0,.1); }
+    .card img { width: 100%; height: 180px; object-fit: cover; }
+    .card-body { padding: 1.25rem; }
+    .tag { display: inline-block; font-size: .75rem; font-weight: 600; color: var(--accent); background: #2563eb18; padding: .15rem .4rem; border-radius: 4px; margin-bottom: .5rem; }
+    .card h3 { margin: .5rem 0; font-size: 1.1rem; }
+    .read-more { display: inline-block; margin-top: .75rem; color: var(--accent); font-weight: 600; cursor: pointer; }
+    footer { text-align: center; padding: 2rem; margin-top: 3rem; border-top: 1px solid var(--border); font-size: .9rem; opacity: .8; }
+    @media (max-width: 640px) { header { flex-direction: column; gap: .5rem; } .hero h1 { font-size: 1.8rem; } }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">📝 ModBlog</div>
+    <nav>
+      <a href="#home">首页</a>
+      <a href="#posts">归档</a>
+      <a href="#about">关于</a>
+      <button id="themeBtn" class="btn">🌙 深色模式</button>
+    </nav>
+  </header>
+  <main>
+    <section id="home" class="hero">
+      <!-- ===== 已修改：h1 内容改为 "专注开发" 相关标题 ===== -->
+      <h1>专注开发实践与技术分享</h1>
+      <!-- ================================================ -->
+      <p>专注前端架构、交互设计与开源生态的现代博客平台</p>
+    </section>
+    <section id="posts">
+      <div class="grid" id="postContainer"></div>
+    </section>
+    <section id="about" style="margin-top:3rem; text-align:center; padding:2rem 0;">
+      <h2 style="margin-bottom:1rem;">关于作者</h2>
+      <p style="max-width:600px; margin:0 auto; opacity:.9;">一名全栈工程师，热衷于构建高性能、可访问的 Web 应用。本文库采用纯原生技术栈编写，无任何第三方依赖。</p>
+    </section>
+  </main>
+  <footer>© 2024 ModBlog. 使用 ❤️ 与原生代码构建</footer>
+  <script>
+    const posts = [
+      { t: 'CSS 容器查询实战', c: '样式布局', u: 'https://picsum.photos/seed/1/400/200' },
+      { t: 'JavaScript 模块演进史', c: '语言核心', u: 'https://picsum.photos/seed/2/400/200' },
+      { t: '构建无障碍网页体验', c: '最佳实践', u: 'https://picsum.photos/seed/3/400/200' },
+      { t: 'Web 性能优化指南', c: '工程化', u: 'https://picsum.photos/seed/4/400/200' }
+    ];
+    const grid = document.getElementById('postContainer');
+    grid.innerHTML = posts.map(p => `
+      <article class="card">
+        <img src="${p.u}" alt="${p.t}">
+        <div class="card-body">
+          <span class="tag">${p.c}</span>
+          <h3>${p.t}</h3>
+          <p style="opacity:.75; font-size:.9rem;">深入解析该技术的核心原理与现代应用场景...</p>
+          <div class="read-more" onclick="window.open('#','_self')">阅读全文 →</div>
+        </div>
+      </article>
+    `).join('');
+    
+    const btn = document.getElementById('themeBtn');
+    const isDark = localStorage.getItem('theme') === 'dark' || window.matchMedia('(prefers-color-scheme: dark)').matches;
+    document.documentElement.setAttribute('data-theme', isDark ? 'dark' : 'light');
+    btn.textContent = isDark ? '☀️ 浅色模式' : '🌙 深色模式';
+    
+    btn.onclick = () => {
+      const next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', next);
+      localStorage.setItem('theme', next);
+      btn.textContent = next === 'dark' ? '☀️ 浅色模式' : '🌙 深色模式';
+    };
+    
+    document.querySelectorAll('a[href^="#"]').forEach(a => a.addEventListener('click', e => {
+      e.preventDefault();
+      document.querySelector(a.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+    }));
+  </script>
+</body>
+</html>

@@ -11,8 +11,8 @@ import org.springframework.context.annotation.Configuration;
 @Slf4j
 @Configuration
 public class CodeQualityCheckServiceFactory {
-    @Resource
-    private ChatModel  chatModel;
+    @Resource(name = "openAiChatModel")
+    private ChatModel chatModel;
 
     /**
      * 创建代码质量检查服务

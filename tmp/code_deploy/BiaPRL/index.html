@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MarkSpace | 个人书签管理器</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="site-header">
+        <div class="header-content">
+            <h1 class="logo">📌 MarkSpace</h1>
+            <p class="subtitle">轻松收集、分类与检索您的网络资源</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- 添加书签区域 -->
+        <section class="card form-section">
+            <h2>添加新书签</h2>
+            <form id="bookmarkForm" autocomplete="off">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="urlInput">网址 URL</label>
+                        <input type="url" id="urlInput" placeholder="https://example.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="titleInput">标题</label>
+                        <input type="text" id="titleInput" placeholder="网页名称" required>
+                    </div>
+                </div>
+                <div class="form-group full-width">
+                    <label for="tagsInput">标签 (支持多个，用英文逗号分隔)</label>
+                    <input type="text" id="tagsInput" placeholder="前端, CSS, 设计灵感">
+                </div>
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary">💾 保存书签</button>
+                    <button type="reset" class="btn btn-secondary">清空表单</button>
+                </div>
+            </form>
+        </section>
+
+        <!-- 搜索与筛选区域 -->
+        <section class="card controls-section">
+            <div class="search-wrapper">
+                <input type="text" id="searchInput" placeholder="🔍 输入关键词搜索标题或网址...">
+            </div>
+            <div class="filters-wrapper">
+                <span class="filter-label">按标签筛选:</span>
+                <div class="tag-list" id="tagFilters">
+                    <!-- 动态生成标签按钮 -->
+                </div>
+                <button id="clearFilterBtn" class="btn btn-text" style="display: none;">清除筛选</button>
+            </div>
+        </section>
+
+        <!-- 书签展示网格 -->
+        <section class="bookmarks-section">
+            <div class="bookmarks-grid" id="bookmarksGrid">
+                <!-- 动态渲染书签卡片 -->
+            </div>
+            <p class="empty-state" id="emptyState">暂无书签数据，请在上方添加第一条记录吧！</p>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-content">
+            <p>&copy; <span id="year"></span> MarkSpace. 所有数据仅存储于您的本地浏览器中。</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

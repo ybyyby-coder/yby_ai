@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TagMark - 标记书签管理器</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="site-header">
+        <div class="container header-content">
+            <h1>📌 TagMark</h1>
+            <p class="subtitle">轻量级标签化书签管理工具 · 数据仅存于本地</p>
+        </div>
+    </header>
+
+    <main class="container main-content">
+        <!-- 添加区域 -->
+        <section class="add-section card">
+            <h2>✨ 添加新书签</h2>
+            <form id="bookmarkForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="bmTitle">标题 / 描述</label>
+                        <input type="text" id="bmTitle" required placeholder="例如：Vue3 官方文档">
+                    </div>
+                    <div class="form-group">
+                        <label for="bmUrl">链接地址</label>
+                        <input type="url" id="bmUrl" required placeholder="https://vuejs.org">
+                    </div>
+                </div>
+                <div class="form-group full-width">
+                    <label for="bmTags">标签 (用逗号或空格分隔，如：前端, Vue, 教程)</label>
+                    <input type="text" id="bmTags" placeholder="前端, Vue, 教程">
+                </div>
+                <button type="submit" class="btn btn-primary">保存到标签库</button>
+            </form>
+        </section>
+
+        <!-- 搜索与筛选区域 -->
+        <section class="filter-section">
+            <div class="search-bar">
+                <input type="text" id="searchInput" placeholder="🔍 搜索标题、网址或内容关键词...">
+            </div>
+            <div class="tag-cloud" id="tagCloud">
+                <span class="tag active" data-tag="">全部</span>
+                <!-- 动态生成的标签将插入此处 -->
+            </div>
+        </section>
+
+        <!-- 书签列表区域 -->
+        <section class="bookmarks-section">
+            <div class="bookmarks-grid" id="bookmarksGrid">
+                <!-- 动态生成的卡片将插入此处 -->
+            </div>
+            <p class="empty-state" id="emptyState">暂无书签，快去添加第一个吧！</p>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-content">
+            <p>&copy; 2024 TagMark. 基于原生 Web 技术构建，无后端依赖。</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
