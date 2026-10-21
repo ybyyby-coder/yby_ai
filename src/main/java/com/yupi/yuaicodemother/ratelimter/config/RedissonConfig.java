@@ -31,7 +31,7 @@ public class RedissonConfig {
         Config config = new Config();
         String address = "redis://" + redisHost + ":" + redisPort;
         SingleServerConfig singleServerConfig = config.useSingleServer()
-                .setAddress(address)
+                 .setAddress(address)
                 .setDatabase(redisDatabase)
                 .setConnectionMinimumIdleSize(1)
                 .setConnectionPoolSize(10)
