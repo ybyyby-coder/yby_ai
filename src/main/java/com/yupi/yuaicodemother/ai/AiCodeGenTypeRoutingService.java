@@ -1,4 +1,4 @@
-package com.yupi.yuaicodemother.ai.route;
+package com.yupi.yuaicodemother.ai;
 
 
 import com.yupi.yuaicodemother.model.enums.CodeGenTypeEnum;

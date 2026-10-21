@@ -18,8 +18,6 @@ import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-
-import javax.tools.Tool;
 import java.time.Duration;
 
 
@@ -29,10 +27,6 @@ public class AiCodeGeneratorServiceFactory {
 
     @Resource(name = "openAiChatModel")
     private ChatModel chatModel;
-    @Resource
-    private StreamingChatModel openAiStreamingChatModel;
-    @Resource
-    private StreamingChatModel reasoningStreamingChatModel;
     @Resource
     private RedisChatMemoryStore redisChatMemoryStore;
     @Resource

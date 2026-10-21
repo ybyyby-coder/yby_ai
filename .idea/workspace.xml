@@ -4,13 +4,27 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="00cd82b4-3119-48ef-88f1-8fc47877da0d" name="Changes" comment="">
+    <list default="true" id="00cd82b4-3119-48ef-88f1-8fc47877da0d" name="Changes" comment="安全性优化（限流）&#10;1.引入redis">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/yupi/yuaicodemother/ai/tools/FileModifyTool.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/yupi/yuaicodemother/ai/tools/FileReadTool.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/yupi/yuaicodemother/ratelimter/annotation/RateLimit.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/yupi/yuaicodemother/ratelimter/aspect/RateLimitAspect.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/yupi/yuaicodemother/ratelimter/config/RedissonConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/yupi/yuaicodemother/ratelimter/enums/RateLimitType.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/yupi/yuaicodemother/config/RedisCacheMangerConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yupi/yuaicodemother/config/RedisCacheMangerConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yupi/yuaicodemother/ai/AiCodeGeneratorServiceFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yupi/yuaicodemother/ai/AiCodeGeneratorServiceFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yupi/yuaicodemother/ai/route/AiCodeGenTypeRoutingService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yupi/yuaicodemother/ai/AiCodeGenTypeRoutingService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yupi/yuaicodemother/ai/route/AiCodeGenTypeRoutingServiceFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yupi/yuaicodemother/ai/AiCodeGenTypeRoutingServiceFactory.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/yupi/yuaicodemother/controller/AppController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yupi/yuaicodemother/controller/AppController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/yupi/yuaicodemother/core/AiCodeGeneratorFacade.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yupi/yuaicodemother/core/AiCodeGeneratorFacade.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yupi/yuaicodemother/exception/ErrorCode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yupi/yuaicodemother/exception/ErrorCode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yupi/yuaicodemother/exception/GlobalExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yupi/yuaicodemother/exception/GlobalExceptionHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yupi/yuaicodemother/langgraph4j/node/RouterNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yupi/yuaicodemother/langgraph4j/node/RouterNode.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/yupi/yuaicodemother/service/impl/AppServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yupi/yuaicodemother/service/impl/AppServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/yupi/yuaicodemother/utils/CacheKeyUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yupi/yuaicodemother/utils/CacheKeyUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/yupi/yuaicodemother/ai/AiCodeGenTypeRoutingServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/yupi/yuaicodemother/ai/AiCodeGenTypeRoutingServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/yupi/yuaicodemother/langgraph4j/ai/AiConcurrentTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/yupi/yuaicodemother/langgraph4j/ai/AiConcurrentTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/yupi/yuaicodemother/service/impl/AppServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/yupi/yuaicodemother/service/impl/AppServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yu-ai-code-mother-fronted/src/pages/app/AppChatPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/yu-ai-code-mother-fronted/src/pages/app/AppChatPage.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -78,13 +92,14 @@
     "Spring Boot.YuAiCodeMotherApplication.executor": "Debug",
     "git-widget-placeholder": "master",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "D:/study/springboot-study/yu-ai-code-mother/src/main/java/com/yupi/yuaicodemother/config",
+    "last_opened_file_path": "D:/study/springboot-study/yu-ai-code-mother/src/main/java/com/yupi/yuaicodemother/retelimter",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "settings.editor.selected.configurable": "reference.settingsdialog.project.grazie",
+    "ts.external.directory.path": "D:\\study\\springboot-study\\yu-ai-code-mother\\yu-ai-code-mother-fronted\\node_modules\\typescript\\lib",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -93,14 +108,15 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\study\springboot-study\yu-ai-code-mother\src\main\java\com\yupi\yuaicodemother\retelimter" />
       <recent name="D:\study\springboot-study\yu-ai-code-mother\src\main\java\com\yupi\yuaicodemother\config" />
       <recent name="D:\study\springboot-study\yu-ai-code-mother\src\main\java\com\yupi\yuaicodemother\langgraph4j\node\concurrent" />
       <recent name="D:\study\springboot-study\yu-ai-code-mother\src\main\java\com\yupi\yuaicodemother\langgraph4j\ai" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="com.yupi.yuaicodemother.ai" />
       <recent name="com.yupi.yuaicodemother.utils" />
       <recent name="com.yupi.yuaicodemother.core" />
-      <recent name="com.yupi.yuaicodemother.ai" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.yupi.yuaicodemother.ai.tools" />
@@ -226,7 +242,7 @@
       <workItem from="1792054339831" duration="4981000" />
       <workItem from="1792375859033" duration="11896000" />
       <workItem from="1792497576436" duration="6480000" />
-      <workItem from="1792547170654" duration="8635000" />
+      <workItem from="1792547170654" duration="12802000" />
     </task>
     <task id="LOCAL-00001" summary="LangGraph4j利用循环边、条件边完成代码审查节点和是否进去vue编译节点">
       <option name="closed" value="true" />
@@ -252,7 +268,15 @@
       <option name="project" value="LOCAL" />
       <updated>1792504044819</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="系统优化2（实时性优化，异步打包改为同步打包）">
+      <option name="closed" value="true" />
+      <created>1792566798410</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1792566798410</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -262,7 +286,8 @@
     <MESSAGE value="LangGraph4j利用循环边、条件边完成代码审查节点和是否进去vue编译节点" />
     <MESSAGE value="LangGraph4j多任务并发" />
     <MESSAGE value="系统优化1（redis缓存，多例模式解决三用户阻塞问题）" />
-    <option name="LAST_COMMIT_MESSAGE" value="系统优化1（redis缓存，多例模式解决三用户阻塞问题）" />
+    <MESSAGE value="系统优化2（实时性优化，异步打包改为同步打包）" />
+    <option name="LAST_COMMIT_MESSAGE" value="系统优化2（实时性优化，异步打包改为同步打包）" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

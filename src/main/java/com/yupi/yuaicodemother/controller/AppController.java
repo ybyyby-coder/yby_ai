@@ -19,6 +19,8 @@ import com.yupi.yuaicodemother.model.entity.App;
 import com.yupi.yuaicodemother.model.entity.User;
 import com.yupi.yuaicodemother.model.enums.CodeGenTypeEnum;
 import com.yupi.yuaicodemother.model.vo.app.AppVO;
+import com.yupi.yuaicodemother.ratelimter.annotation.RateLimit;
+import com.yupi.yuaicodemother.ratelimter.enums.RateLimitType;
 import com.yupi.yuaicodemother.service.ProjectDownloadService;
 import com.yupi.yuaicodemother.service.UserService;
 import jakarta.annotation.Resource;
@@ -278,6 +280,8 @@ public class AppController {
      * @return 生成结果流
      */
     @GetMapping(value = "/chat/gen/code",produces = MediaType.TEXT_EVENT_STREAM_VALUE)
+    @RateLimit(limitType = RateLimitType.USER, rate = 5, rateInterval = 60, message = "AI 对话请求过于频繁，请稍后再试")
+    //限制1分钟一个用户只能获取5次
     public Flux<ServerSentEvent<String>> chatToGenCode(@RequestParam Long appId,
                                                        @RequestParam String message,
                                                        HttpServletRequest request) {

@@ -1,6 +1,5 @@
 package com.yupi.yuaicodemother.ai;
 
-import com.yupi.yuaicodemother.ai.route.AiCodeGenTypeRoutingService;
 import com.yupi.yuaicodemother.model.enums.CodeGenTypeEnum;
 import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;

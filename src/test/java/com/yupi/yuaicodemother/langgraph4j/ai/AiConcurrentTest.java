@@ -1,7 +1,7 @@
 package com.yupi.yuaicodemother.langgraph4j.ai;
 
-import com.yupi.yuaicodemother.ai.route.AiCodeGenTypeRoutingService;
-import com.yupi.yuaicodemother.ai.route.AiCodeGenTypeRoutingServiceFactory;
+import com.yupi.yuaicodemother.ai.AiCodeGenTypeRoutingService;
+import com.yupi.yuaicodemother.ai.AiCodeGenTypeRoutingServiceFactory;
 import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
