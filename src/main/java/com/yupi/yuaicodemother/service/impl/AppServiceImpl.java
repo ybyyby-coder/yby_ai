@@ -120,16 +120,27 @@ public class AppServiceImpl extends ServiceImpl<AppMapper, App> implements AppSe
         Long userId = appQueryRequest.getUserId();
         String sortField = appQueryRequest.getSortField();
         String sortOrder = appQueryRequest.getSortOrder();
-        return QueryWrapper.create()
+        QueryWrapper wrapper = QueryWrapper.create()
                 .eq("id", id)
-                .like("appName", appName)
-                .like("cover", cover)
-                .like("initPrompt", initPrompt)
-                .eq("codeGenType", codeGenType)
-                .eq("deployKey", deployKey)
+                .like("appName", blankToNull(appName))
+                .like("cover", blankToNull(cover))
+                .like("initPrompt", blankToNull(initPrompt))
+                .eq("codeGenType", blankToNull(codeGenType))
+                .eq("deployKey", blankToNull(deployKey))
                 .eq("priority", priority)
-                .eq("userId", userId)
-                .orderBy(sortField, "ascend".equals(sortOrder));
+                .eq("userId", userId);
+        //当排序字段不为空时，进行排序
+        if(StrUtil.isNotBlank(sortField)) {
+            wrapper.orderBy(sortField, "ascend".equals(sortOrder));
+        }
+        return wrapper;
+    }
+
+    /**
+     * 空串统一转null，避免数据库查询条件出错
+     */
+    private static String blankToNull(String s ){
+        return (s == null || s.trim().isEmpty()) ? null : s;
     }
     @Override
     public List<AppVO> getAppVOList(List<App> appList) {

@@ -19,7 +19,7 @@ public class CacheKeyUtils {
         //1.用稳定化序列：字段排序、忽略null策略统一
         String json = JsonUtils.toJson(obj);
         //2.加入类型信息，防止不同类型的对象生成相同的缓存key
-        String raw = obj.getClass().getName() + ":" + json;
-        return DigestUtil.md5Hex(raw);
+        String key = obj.getClass().getName() + ":" + json;
+        return DigestUtil.md5Hex(key);
     }
 }

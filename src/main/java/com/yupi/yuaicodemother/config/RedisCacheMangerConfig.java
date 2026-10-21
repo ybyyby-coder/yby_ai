@@ -35,10 +35,9 @@ public class RedisCacheMangerConfig {
                 .entryTtl(Duration.ofMinutes(30))   //默认30分钟过期
                 .disableCachingNullValues()         //禁止null值缓存
                 //key使用String序列化器
-                .serializeKeysWith(RedisSerializationContext.SerializationPair.fromSerializer(new StringRedisSerializer()));
-                //TODO 完成value的序列化配置
+                .serializeKeysWith(RedisSerializationContext.SerializationPair.fromSerializer(new StringRedisSerializer()))
                 //value 使用JSON序列化器（支持复杂对象）
-//                .serializeValuesWith(RedisSerializationContext.SerializationPair.fromSerializer(new GenericJackson2JsonRedisSerializer(objectMapper)));
+              .serializeValuesWith(RedisSerializationContext.SerializationPair.fromSerializer(new GenericJackson2JsonRedisSerializer(objectMapper)));
         return RedisCacheManager.builder(redisConnectionFactory)
                         .cacheDefaults(defaultConfig)
                 //针对good_app_page 配置5分钟过期

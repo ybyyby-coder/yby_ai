@@ -34,6 +34,7 @@ public class AiCodeGeneratorFacade {
 
     @Resource
     private AiCodeGeneratorServiceFactory aiCodeGeneratorServiceFactory;
+    @Resource
     private VueProjectBuilder vueProjectBuilder;
 
     /**
