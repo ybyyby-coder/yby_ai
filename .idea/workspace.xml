@@ -4,12 +4,25 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="00cd82b4-3119-48ef-88f1-8fc47877da0d" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/yupi/yuaicodemother/ai/guardrail/PromptSafetyInputGuardrail.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/yupi/yuaicodemother/ai/guardrail/RetryOutputGuardrail.java" afterDir="false" />
+    <list default="true" id="00cd82b4-3119-48ef-88f1-8fc47877da0d" name="Changes" comment="稳定性优化&#10;1.自动重试护轨&#10;2.防止工具无限调用">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/yupi/yuaicodemother/ai/AiCodeGeneratorServiceFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yupi/yuaicodemother/ai/AiCodeGeneratorServiceFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/yupi/yuaicodemother/ratelimter/config/RedissonConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yupi/yuaicodemother/ratelimter/config/RedissonConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application-local.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application-local.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/application-local.yml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application-local.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/yupi/yuaicodemother/ai/AiCodeGeneratorServiceFactory$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/yupi/yuaicodemother/ai/AiCodeGeneratorServiceFactory$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/yupi/yuaicodemother/ai/AiCodeGeneratorServiceFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/yupi/yuaicodemother/ai/AiCodeGeneratorServiceFactory.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/yupi/yuaicodemother/ai/route/AiCodeGenTypeRoutingService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/yupi/yuaicodemother/ai/route/AiCodeGenTypeRoutingServiceFactory.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/yupi/yuaicodemother/controller/AppController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/yupi/yuaicodemother/controller/AppController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/yupi/yuaicodemother/core/AiCodeGeneratorFacade$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/yupi/yuaicodemother/core/AiCodeGeneratorFacade$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/yupi/yuaicodemother/core/AiCodeGeneratorFacade.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/yupi/yuaicodemother/core/AiCodeGeneratorFacade.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/yupi/yuaicodemother/exception/ErrorCode.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/yupi/yuaicodemother/exception/ErrorCode.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/yupi/yuaicodemother/exception/GlobalExceptionHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/yupi/yuaicodemother/exception/GlobalExceptionHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/yupi/yuaicodemother/langgraph4j/node/RouterNode.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/yupi/yuaicodemother/langgraph4j/node/RouterNode.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/yupi/yuaicodemother/service/impl/AppServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/yupi/yuaicodemother/service/impl/AppServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yu-ai-code-mother-fronted/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/yu-ai-code-mother-fronted/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yu-ai-code-mother-fronted/src/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/yu-ai-code-mother-fronted/src/App.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yu-ai-code-mother-fronted/src/components/GlobalFooter.vue" beforeDir="false" afterPath="$PROJECT_DIR$/yu-ai-code-mother-fronted/src/components/GlobalFooter.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yu-ai-code-mother-fronted/src/components/GlobalHeader.vue" beforeDir="false" afterPath="$PROJECT_DIR$/yu-ai-code-mother-fronted/src/components/GlobalHeader.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,7 +87,7 @@
     "RequestMappingsPanelWidth0": "75",
     "RequestMappingsPanelWidth1": "75",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "Spring Boot.YuAiCodeMotherApplication.executor": "Debug",
+    "Spring Boot.YuAiCodeMotherApplication.executor": "Run",
     "git-widget-placeholder": "master",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "D:/study/springboot-study/yu-ai-code-mother/src/main/java/com/yupi/yuaicodemother/ai",
@@ -228,7 +241,8 @@
       <workItem from="1792054339831" duration="4981000" />
       <workItem from="1792375859033" duration="11896000" />
       <workItem from="1792497576436" duration="6480000" />
-      <workItem from="1792547170654" duration="14717000" />
+      <workItem from="1792547170654" duration="16316000" />
+      <workItem from="1792718757834" duration="3267000" />
     </task>
     <task id="LOCAL-00001" summary="LangGraph4j利用循环边、条件边完成代码审查节点和是否进去vue编译节点">
       <option name="closed" value="true" />
@@ -270,7 +284,15 @@
       <option name="project" value="LOCAL" />
       <updated>1792571226328</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="稳定性优化&#10;1.自动重试护轨&#10;2.防止工具无限调用">
+      <option name="closed" value="true" />
+      <created>1792573336837</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1792573336837</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -283,7 +305,8 @@
     <MESSAGE value="系统优化2（实时性优化，异步打包改为同步打包）" />
     <MESSAGE value="安全性优化（限流）&#10;1.引入redis" />
     <MESSAGE value="安全性优化（限流）&#10;1.引入redisson 实现限流&#10;2.配置RateLimit注解&#10;3.给对应的调用进行限流" />
-    <option name="LAST_COMMIT_MESSAGE" value="安全性优化（限流）&#10;1.引入redisson 实现限流&#10;2.配置RateLimit注解&#10;3.给对应的调用进行限流" />
+    <MESSAGE value="稳定性优化&#10;1.自动重试护轨&#10;2.防止工具无限调用" />
+    <option name="LAST_COMMIT_MESSAGE" value="稳定性优化&#10;1.自动重试护轨&#10;2.防止工具无限调用" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
