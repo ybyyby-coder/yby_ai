@@ -224,7 +224,7 @@ onMounted(() => {
       </div>
 
       <!-- 我的作品 -->
-      <div class="section">
+      <div v-if="loginUserStore.loginUser.id" class="section">
         <h2 class="section-title">我的作品</h2>
         <div class="app-grid">
           <AppCard
@@ -282,37 +282,13 @@ onMounted(() => {
   padding: 0;
   min-height: 100vh;
   background:
-    linear-gradient(180deg, #f8fafc 0%, #f1f5f9 8%, #e2e8f0 20%, #cbd5e1 100%),
-    radial-gradient(circle at 20% 80%, rgba(59, 130, 246, 0.15) 0%, transparent 50%),
-    radial-gradient(circle at 80% 20%, rgba(139, 92, 246, 0.12) 0%, transparent 50%),
-    radial-gradient(circle at 40% 40%, rgba(16, 185, 129, 0.08) 0%, transparent 50%);
+    radial-gradient(ellipse 72% 36% at 50% 0%, rgba(196, 229, 213, 0.48) 0%, transparent 85%),
+    linear-gradient(180deg, #f9faf7 0%, #f2f7f3 100%);
   position: relative;
   overflow: hidden;
 }
 
-/* 科技感网格背景 */
-#homePage::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-image:
-    linear-gradient(rgba(59, 130, 246, 0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(59, 130, 246, 0.05) 1px, transparent 1px),
-    linear-gradient(rgba(139, 92, 246, 0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(139, 92, 246, 0.04) 1px, transparent 1px);
-  background-size:
-    100px 100px,
-    100px 100px,
-    20px 20px,
-    20px 20px;
-  pointer-events: none;
-  animation: gridFloat 20s ease-in-out infinite;
-}
-
-/* 动态光效 */
+/* 鼠标周围的轻微薄荷色氛围 */
 #homePage::after {
   content: '';
   position: absolute;
@@ -323,24 +299,14 @@ onMounted(() => {
   background:
     radial-gradient(
       600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
-      rgba(59, 130, 246, 0.08) 0%,
-      rgba(139, 92, 246, 0.06) 40%,
+      rgba(141, 199, 173, 0.12) 0%,
+      rgba(141, 199, 173, 0.06) 40%,
       transparent 80%
     ),
-    linear-gradient(45deg, transparent 30%, rgba(59, 130, 246, 0.04) 50%, transparent 70%),
-    linear-gradient(-45deg, transparent 30%, rgba(139, 92, 246, 0.04) 50%, transparent 70%);
+    linear-gradient(45deg, transparent 30%, rgba(141, 199, 173, 0.035) 50%, transparent 70%),
+    linear-gradient(-45deg, transparent 30%, rgba(141, 199, 173, 0.035) 50%, transparent 70%);
   pointer-events: none;
   animation: lightPulse 8s ease-in-out infinite alternate;
-}
-
-@keyframes gridFloat {
-  0%,
-  100% {
-    transform: translate(0, 0);
-  }
-  50% {
-    transform: translate(5px, 5px);
-  }
 }
 
 @keyframes lightPulse {
@@ -369,7 +335,7 @@ onMounted(() => {
   text-align: center;
   padding: 80px 0 60px;
   margin-bottom: 28px;
-  color: #1e293b;
+  color: var(--color-ink);
   position: relative;
   overflow: hidden;
 }
@@ -382,9 +348,9 @@ onMounted(() => {
   right: 0;
   bottom: 0;
   background:
-    radial-gradient(ellipse 800px 400px at center, rgba(59, 130, 246, 0.12) 0%, transparent 70%),
-    linear-gradient(45deg, transparent 30%, rgba(139, 92, 246, 0.05) 50%, transparent 70%),
-    linear-gradient(-45deg, transparent 30%, rgba(16, 185, 129, 0.04) 50%, transparent 70%);
+    radial-gradient(ellipse 800px 400px at center, rgba(177, 219, 198, 0.22) 0%, transparent 70%),
+    linear-gradient(45deg, transparent 30%, rgba(141, 199, 173, 0.035) 50%, transparent 70%),
+    linear-gradient(-45deg, transparent 30%, rgba(141, 199, 173, 0.035) 50%, transparent 70%);
   animation: heroGlow 10s ease-in-out infinite alternate;
 }
 
@@ -413,31 +379,16 @@ onMounted(() => {
   font-weight: 700;
   margin: 0 0 20px;
   line-height: 1.2;
-  background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 50%, #10b981 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: var(--color-ink);
   letter-spacing: -1px;
   position: relative;
   z-index: 2;
-  animation: titleShimmer 3s ease-in-out infinite;
-}
-
-@keyframes titleShimmer {
-  0%,
-  100% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
 }
 
 .hero-description {
   font-size: 20px;
   margin: 0;
-  opacity: 0.8;
-  color: #64748b;
+  color: var(--color-ink-muted);
   position: relative;
   z-index: 2;
 }
@@ -451,17 +402,17 @@ onMounted(() => {
 
 .prompt-input {
   border-radius: 16px;
-  border: none;
+  border: 1px solid var(--color-border);
   font-size: 16px;
   padding: 20px 60px 20px 20px;
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(20px);
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+  background: rgba(255, 255, 255, 0.96);
+  box-shadow: 0 12px 32px rgba(28, 73, 62, 0.1);
 }
 
 .prompt-input:focus {
-  background: rgba(255, 255, 255, 1);
-  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.3);
+  background: var(--color-surface);
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(8, 127, 114, 0.12), 0 12px 32px rgba(28, 73, 62, 0.1);
   transform: translateY(-2px);
 }
 
@@ -487,10 +438,9 @@ onMounted(() => {
   border-radius: 25px;
   padding: 8px 20px;
   height: auto;
-  background: rgba(255, 255, 255, 0.8);
-  border: 1px solid rgba(59, 130, 246, 0.2);
-  color: #475569;
-  backdrop-filter: blur(15px);
+  background: rgba(255, 255, 255, 0.84);
+  border: 1px solid rgba(8, 127, 114, 0.16);
+  color: #31534b;
   transition: all 0.3s;
   position: relative;
   overflow: hidden;
@@ -503,7 +453,7 @@ onMounted(() => {
   left: -100%;
   width: 100%;
   height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.1), transparent);
+  background: linear-gradient(90deg, transparent, rgba(8, 127, 114, 0.08), transparent);
   transition: left 0.5s;
 }
 
@@ -512,11 +462,11 @@ onMounted(() => {
 }
 
 .quick-actions .ant-btn:hover {
-  background: rgba(255, 255, 255, 0.9);
-  border-color: rgba(59, 130, 246, 0.4);
-  color: #3b82f6;
+  background: var(--color-surface);
+  border-color: rgba(8, 127, 114, 0.4);
+  color: var(--color-primary);
   transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(59, 130, 246, 0.2);
+  box-shadow: 0 8px 22px rgba(8, 127, 114, 0.12);
 }
 
 /* 区域标题 */
@@ -528,7 +478,7 @@ onMounted(() => {
   font-size: 32px;
   font-weight: 600;
   margin-bottom: 32px;
-  color: #1e293b;
+  color: var(--color-ink);
 }
 
 /* 我的作品网格 */

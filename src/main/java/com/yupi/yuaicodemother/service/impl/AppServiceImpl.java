@@ -34,6 +34,7 @@ import com.yupi.yuaicodemother.service.UserService;
 import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import reactor.core.publisher.Flux;
 import java.io.File;
 import java.io.Serializable;
@@ -252,7 +253,7 @@ public class AppServiceImpl extends ServiceImpl<AppMapper, App> implements AppSe
      * @param appId             应用ID
      * @param appUrl      应用访问URL
      */
-    private void generateAppScreenshotAsync(Long appId, String appUrl) {
+    public void generateAppScreenshotAsync(Long appId, String appUrl) {
         //使用虚拟线程异步执行
         Thread.startVirtualThread(()->{
             //调用截图服务生成截图并上传
@@ -266,19 +267,36 @@ public class AppServiceImpl extends ServiceImpl<AppMapper, App> implements AppSe
         });
     }
 
+    @Override
+    @Transactional(rollbackFor = Exception.class)
+    public boolean deleteAppWithHistory(long id) {
+        // 1. 判断是否存在
+        App oldApp = this.getById(id);
+        ThrowUtils.throwIf(oldApp == null, ErrorCode.NOT_FOUND_ERROR, "应用不存在");
+
+        // 2. 删除应用
+        boolean result1 = this.removeById(id);
+        ThrowUtils.throwIf(!result1, ErrorCode.OPERATION_ERROR, "删除应用失败");
+
+        // 3. 删除应用下的所有对话
+        boolean result2 = this.deleteAppHistory(id);
+        ThrowUtils.throwIf(!result2, ErrorCode.OPERATION_ERROR, "删除应用下的所有对话失败");
+
+        return true;
+    }
+
     /**
      * 删除应用时删除关联的对话历史
      * @param id
      * @return
      */
-    @Override
-    public boolean removeById(Serializable id){
+    public boolean deleteAppHistory(Serializable id){
         if(id == null){
             return false;
         }
         //转化Long类型
         Long appId = Convert.toLong(id);
-        if(appId >0 ){
+        if(appId == null || appId <= 0 ){
             return false;
         }
         //先删除关联的对话历史

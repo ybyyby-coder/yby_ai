@@ -155,7 +155,9 @@ onMounted(() => {
 <style scoped>
 #userManagePage {
   padding: 24px;
-  background: white;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border-soft);
+  border-radius: 12px;
   margin-top: 16px;
 }
 </style>

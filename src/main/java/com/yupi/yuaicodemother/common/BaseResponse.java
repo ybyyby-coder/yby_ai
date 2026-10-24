@@ -1,7 +1,9 @@
 package com.yupi.yuaicodemother.common;
 
 import com.yupi.yuaicodemother.exception.ErrorCode;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 
@@ -11,6 +13,8 @@ import java.io.Serializable;
  * @param <T>
  */
 @Data
+//反序列化时需要
+@NoArgsConstructor
 public class BaseResponse<T> implements Serializable {
 
     private int code;

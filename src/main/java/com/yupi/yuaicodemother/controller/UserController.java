@@ -90,6 +90,20 @@ public class UserController {
         boolean result = userService.userLogout(request);
         return ResultUtils.success(result);
     }
+
+    /** 更新当前登录用户的昵称和头像。 */
+    @PostMapping("/profile")
+    public BaseResponse<LoginUserVO> updateMyProfile(@RequestBody UserProfileUpdateRequest userProfileUpdateRequest,
+                                                     HttpServletRequest request) {
+        return ResultUtils.success(userService.updateMyProfile(userProfileUpdateRequest, request));
+    }
+
+    /** 更新当前登录用户的密码。 */
+    @PostMapping("/password")
+    public BaseResponse<Boolean> updateMyPassword(@RequestBody UserPasswordUpdateRequest userPasswordUpdateRequest,
+                                                  HttpServletRequest request) {
+        return ResultUtils.success(userService.updateMyPassword(userPasswordUpdateRequest, request));
+    }
     /**
      * 创建用户
      */
@@ -124,6 +138,7 @@ public class UserController {
      * 根据 id 获取包装类
      */
     @GetMapping("/get/vo")
+    @AuthCheck(mustRole = UserConstant.ADMIN_ROLE)
     public BaseResponse<UserVO> getUserVOById(long id) {
         BaseResponse<User> response = getUserById(id);
         User user = response.getData();
@@ -185,6 +200,7 @@ public class UserController {
      * @return {@code true} 保存成功，{@code false} 保存失败
      */
     @PostMapping("save")
+    @AuthCheck(mustRole = UserConstant.ADMIN_ROLE)
     public boolean save(@RequestBody User user) {
         return userService.save(user);
     }
@@ -196,6 +212,7 @@ public class UserController {
      * @return {@code true} 删除成功，{@code false} 删除失败
      */
     @DeleteMapping("remove/{id}")
+    @AuthCheck(mustRole = UserConstant.ADMIN_ROLE)
     public boolean remove(@PathVariable Long id) {
         return userService.removeById(id);
     }
@@ -207,6 +224,7 @@ public class UserController {
      * @return {@code true} 更新成功，{@code false} 更新失败
      */
     @PutMapping("update")
+    @AuthCheck(mustRole = UserConstant.ADMIN_ROLE)
     public boolean update(@RequestBody User user) {
         return userService.updateById(user);
     }
@@ -217,6 +235,7 @@ public class UserController {
      * @return 所有数据
      */
     @GetMapping("list")
+    @AuthCheck(mustRole = UserConstant.ADMIN_ROLE)
     public List<User> list() {
         return userService.list();
     }
@@ -228,6 +247,7 @@ public class UserController {
      * @return 用户详情
      */
     @GetMapping("getInfo/{id}")
+    @AuthCheck(mustRole = UserConstant.ADMIN_ROLE)
     public User getInfo(@PathVariable Long id) {
         return userService.getById(id);
     }
@@ -239,6 +259,7 @@ public class UserController {
      * @return 分页对象
      */
     @GetMapping("page")
+    @AuthCheck(mustRole = UserConstant.ADMIN_ROLE)
     public Page<User> page(Page<User> page) {
         return userService.page(page);
     }

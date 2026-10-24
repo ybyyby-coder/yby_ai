@@ -30,6 +30,10 @@
               </a-space>
               <template #overlay>
                 <a-menu>
+                  <a-menu-item @click="router.push('/user/profile')">
+                    <UserOutlined />
+                    个人中心
+                  </a-menu-item>
                   <a-menu-item @click="doLogout">
                     <LogoutOutlined />
                     退出登录
@@ -53,7 +57,7 @@ import { useRouter } from 'vue-router'
 import { type MenuProps, message } from 'ant-design-vue'
 import { useLoginUserStore } from '@/stores/loginUser.ts'
 import { userLogout } from '@/api/userController.ts'
-import { LogoutOutlined, HomeOutlined } from '@ant-design/icons-vue'
+import { LogoutOutlined, HomeOutlined, UserOutlined } from '@ant-design/icons-vue'
 
 const loginUserStore = useLoginUserStore()
 const router = useRouter()
@@ -128,8 +132,9 @@ const doLogout = async () => {
 
 <style scoped>
 .header {
-  background: #fff;
+  background: var(--color-surface);
   padding: 0 24px;
+  border-bottom: 1px solid var(--color-border-soft);
 }
 
 .header-left {
@@ -146,7 +151,7 @@ const doLogout = async () => {
 .site-title {
   margin: 0;
   font-size: 18px;
-  color: #1890ff;
+  color: var(--color-primary);
 }
 
 .ant-menu-horizontal {

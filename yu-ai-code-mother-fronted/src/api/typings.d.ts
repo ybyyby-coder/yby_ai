@@ -292,6 +292,17 @@ declare namespace API {
     userRole?: string
   }
 
+  type UserProfileUpdateRequest = {
+    userName?: string
+    userAvatar?: string
+  }
+
+  type UserPasswordUpdateRequest = {
+    oldPassword?: string
+    newPassword?: string
+    checkPassword?: string
+  }
+
   type UserVO = {
     id?: number
     userAccount?: string

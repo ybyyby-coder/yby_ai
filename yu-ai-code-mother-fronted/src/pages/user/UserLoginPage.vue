@@ -1,6 +1,6 @@
 <template>
   <div id="userLoginPage">
-    <h2 class="title">鱼皮 AI 应用生成 - 用户登录</h2>
+    <h2 class="title">PageSmith - 用户登录</h2>
     <div class="desc">不写一行代码，生成完整应用</div>
     <a-form :model="formState" name="basic" autocomplete="off" @finish="handleSubmit">
       <a-form-item name="userAccount" :rules="[{ required: true, message: '请输入账号' }]">
@@ -62,27 +62,38 @@ const handleSubmit = async (values: any) => {
 
 <style scoped>
 #userLoginPage {
-  background: white;
+  background: var(--color-surface);
   max-width: 720px;
-  padding: 24px;
-  margin: 24px auto;
+  padding: 32px;
+  margin: 48px auto;
+  border: 1px solid var(--color-border-soft);
+  border-radius: 16px;
+  box-shadow: var(--shadow-card);
 }
 
 .title {
   text-align: center;
   margin-bottom: 16px;
+  color: var(--color-ink);
 }
 
 .desc {
   text-align: center;
-  color: #bbb;
+  color: var(--color-ink-muted);
   margin-bottom: 16px;
 }
 
 .tips {
   text-align: right;
-  color: #bbb;
+  color: var(--color-ink-muted);
   font-size: 13px;
   margin-bottom: 16px;
+}
+
+@media (max-width: 600px) {
+  #userLoginPage {
+    margin: 24px 16px;
+    padding: 24px 20px;
+  }
 }
 </style>

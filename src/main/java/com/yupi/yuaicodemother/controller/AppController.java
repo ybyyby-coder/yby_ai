@@ -26,6 +26,7 @@ import com.yupi.yuaicodemother.service.UserService;
 import jakarta.annotation.Resource;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.http.codec.ServerSentEvent;
 import org.springframework.http.MediaType;
@@ -45,6 +46,7 @@ import java.util.Map;
  *
  * @author <a href="https://github.com/ybycoder">yby</a>
  */
+@Slf4j
 @RestController
 @RequestMapping("/app")
 public class AppController {
@@ -121,7 +123,9 @@ public class AppController {
         if (!oldApp.getUserId().equals(loginUser.getId()) && !UserConstant.ADMIN_ROLE.equals(loginUser.getUserRole())) {
             throw new BusinessException(ErrorCode.NO_AUTH_ERROR);
         }
-        boolean result = appService.removeById(id);
+        // 删除应用及其对话
+        boolean result = appService.deleteAppWithHistory(id);
+        ThrowUtils.throwIf(!result, ErrorCode.OPERATION_ERROR, "删除应用失败");
         return ResultUtils.success(result);
     }
     /**
@@ -201,14 +205,16 @@ public class AppController {
     @PostMapping("/admin/delete")
     @AuthCheck(mustRole = UserConstant.ADMIN_ROLE)
     public BaseResponse<Boolean> deleteAppByAdmin(@RequestBody DeleteRequest deleteRequest) {
-        if (deleteRequest == null || deleteRequest.getId() <= 0) {
+        if (deleteRequest == null || deleteRequest.getId() == null || deleteRequest.getId() <= 0) {
             throw new BusinessException(ErrorCode.PARAMS_ERROR);
         }
         long id = deleteRequest.getId();
         // 判断是否存在
         App oldApp = appService.getById(id);
         ThrowUtils.throwIf(oldApp == null, ErrorCode.NOT_FOUND_ERROR);
-        boolean result = appService.removeById(id);
+        // 删除应用及其对话
+        boolean result = appService.deleteAppWithHistory(id);
+        ThrowUtils.throwIf(!result, ErrorCode.OPERATION_ERROR, "删除应用失败");
         return ResultUtils.success(result);
     }
     /**

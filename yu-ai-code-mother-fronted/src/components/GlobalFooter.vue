@@ -14,7 +14,8 @@
 
 <style scoped>
 .footer {
-  background: #efefef;
+  background: #edf3ef;
+  border-top: 1px solid var(--color-border-soft);
   text-align: center;
   padding: 20px;
   position: fixed;
@@ -25,7 +26,7 @@
 
 .copyright {
   margin: 0;
-  color: #666;
+  color: var(--color-ink-muted);
   font-size: 14px;
 }
 </style>

@@ -3,6 +3,8 @@ package com.yupi.yuaicodemother.service;
 import com.mybatisflex.core.query.QueryWrapper;
 import com.mybatisflex.core.service.IService;
 import com.yupi.yuaicodemother.model.dto.user.UserQueryRequest;
+import com.yupi.yuaicodemother.model.dto.user.UserPasswordUpdateRequest;
+import com.yupi.yuaicodemother.model.dto.user.UserProfileUpdateRequest;
 import com.yupi.yuaicodemother.model.entity.User;
 import com.yupi.yuaicodemother.model.vo.user.LoginUserVO;
 import com.yupi.yuaicodemother.model.vo.user.UserVO;
@@ -62,6 +64,16 @@ public interface UserService extends IService<User> {
      * @return
      */
     boolean userLogout(HttpServletRequest request);
+
+    /**
+     * 更新当前登录用户的昵称和头像。
+     */
+    LoginUserVO updateMyProfile(UserProfileUpdateRequest request, HttpServletRequest httpRequest);
+
+    /**
+     * 更新当前登录用户的密码。
+     */
+    boolean updateMyPassword(UserPasswordUpdateRequest request, HttpServletRequest httpRequest);
     /**
      * 获取脱敏的用户信息
      *

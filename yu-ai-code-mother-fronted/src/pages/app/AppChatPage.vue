@@ -773,7 +773,7 @@ onUnmounted(() => {
   display: flex;
   flex-direction: column;
   padding: 16px;
-  background: #fdfdfd;
+  background: var(--color-canvas);
 }
 
 /* 顶部栏 */
@@ -798,7 +798,7 @@ onUnmounted(() => {
   margin: 0;
   font-size: 18px;
   font-weight: 600;
-  color: #1a1a1a;
+  color: var(--color-ink);
 }
 
 .header-right {
@@ -820,9 +820,10 @@ onUnmounted(() => {
   flex: 2;
   display: flex;
   flex-direction: column;
-  background: white;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border-soft);
+  border-radius: 12px;
+  box-shadow: var(--shadow-card);
   overflow: hidden;
 }
 
@@ -860,13 +861,13 @@ onUnmounted(() => {
 }
 
 .user-message .message-content {
-  background: #1890ff;
+  background: var(--color-primary);
   color: white;
 }
 
 .ai-message .message-content {
-  background: #f5f5f5;
-  color: #1a1a1a;
+  background: var(--color-surface-muted);
+  color: var(--color-ink);
   padding: 8px 12px;
 }
 
@@ -878,7 +879,7 @@ onUnmounted(() => {
   display: flex;
   align-items: center;
   gap: 8px;
-  color: #666;
+  color: var(--color-ink-muted);
 }
 
 /* 加载更多按钮 */
@@ -891,7 +892,8 @@ onUnmounted(() => {
 /* 输入区域 */
 .input-container {
   padding: 16px;
-  background: white;
+  background: var(--color-surface);
+  border-top: 1px solid var(--color-border-soft);
 }
 
 .input-wrapper {
@@ -913,9 +915,10 @@ onUnmounted(() => {
   flex: 3;
   display: flex;
   flex-direction: column;
-  background: white;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border-soft);
+  border-radius: 12px;
+  box-shadow: var(--shadow-card);
   overflow: hidden;
 }
 
@@ -924,7 +927,7 @@ onUnmounted(() => {
   justify-content: space-between;
   align-items: center;
   padding: 16px;
-  border-bottom: 1px solid #e8e8e8;
+  border-bottom: 1px solid var(--color-border-soft);
 }
 
 .preview-header h3 {
@@ -950,7 +953,7 @@ onUnmounted(() => {
   align-items: center;
   justify-content: center;
   height: 100%;
-  color: #666;
+  color: var(--color-ink-muted);
 }
 
 .placeholder-icon {
@@ -964,7 +967,7 @@ onUnmounted(() => {
   align-items: center;
   justify-content: center;
   height: 100%;
-  color: #666;
+  color: var(--color-ink-muted);
 }
 
 .preview-loading p {
@@ -1042,39 +1045,39 @@ onUnmounted(() => {
     font-family: 'Monaco', 'Menlo', monospace;
     font-size: 14px;
     font-weight: 600;
-    color: #007bff;
+    color: var(--color-primary-deep);
   }
 
   .element-id {
-    color: #28a745;
+    color: #2f805c;
     margin-left: 4px;
   }
 
   .element-class {
-    color: #ffc107;
+    color: #8c5a0a;
     margin-left: 4px;
   }
 
   .element-selector-code {
     font-family: 'Monaco', 'Menlo', monospace;
-    background: #f6f8fa;
+    background: var(--color-surface-muted);
     padding: 2px 4px;
     border-radius: 3px;
     font-size: 12px;
-    color: #d73a49;
-    border: 1px solid #e1e4e8;
+    color: #a63b36;
+    border: 1px solid var(--color-border);
   }
 
   /* 编辑模式按钮样式 */
   .edit-mode-active {
-    background-color: #52c41a !important;
-    border-color: #52c41a !important;
+    background-color: #2f805c !important;
+    border-color: #2f805c !important;
     color: white !important;
   }
 
   .edit-mode-active:hover {
-    background-color: #73d13d !important;
-    border-color: #73d13d !important;
+    background-color: #246848 !important;
+    border-color: #246848 !important;
   }
 }
 </style>

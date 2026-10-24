@@ -10,6 +10,7 @@ import com.yupi.yuaicodemother.model.entity.User;
 import com.yupi.yuaicodemother.model.vo.app.AppVO;
 import reactor.core.publisher.Flux;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -62,4 +63,17 @@ public interface AppService extends IService<App> {
      * @return
      */
     String deployApp(Long appId, User loginUser);
+
+    /**
+     * 异步生成应用截图并更新封面
+     *
+     * @param appId  应用ID
+     * @param appUrl 应用访问URL
+     */
+    void generateAppScreenshotAsync(Long appId, String appUrl);
+
+    /**
+     * 删除应用及其所有对话（事务）
+     */
+    boolean deleteAppWithHistory(long id);
 }
